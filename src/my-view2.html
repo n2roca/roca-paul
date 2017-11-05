@@ -1,0 +1,81 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/google-map/google-map-marker.html">
+<link rel="import" href="my-app.html">
+
+
+<dom-module id="my-view2">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+     
+      <h1>Sobre Full Viajes</h1>
+      <p>Bienvenido a FULL VIAJES PERU</p>
+<p>Esta es nuestra APP con tecnologia PWA, las Web Apps son experiencias que combinan lo mejor de la Web y lo mejor de las apps</p>
+<p><b>Que encontraras?</b>  Catalogo de Paquetes turísticos vacacionales totalmente Confirmados</p></div>
+
+ <div class="card"> 
+<p><b>RUC</b>: 20556028754
+<p><b>REGISTRO SUNARP</b>: FULL VIAJES PERU E.I.R.L
+<p><b>NOMBRE COMERCIAL</b>: FULL VIAJES
+<p><b>Nuestra Oficina:</b>
+<p>Oficina Pardo – Lima Perú
+<p>Av.Pardo 620 Of. 401 – Miraflores
+<p>(511)249-5291 / 2495116
+<p>Celular 992193358</p>
+    
+    </div>
+    <div class="card"> 
+       <P><a href="http://www.fullviajes.net">PAGINA WEB OFFICIAL</a>
+        <P><a href="https://www.fullviajes.mobi">APP WEB OFFICIAL</a>
+
+    </div>
+    <div class="card">
+  <google-youtube
+  video-id="Y1nEpU1G8c8"
+  height="270px"
+  width="480px"
+  rel="0"
+  start="5"
+  autoplay="1">
+</google-youtube>
+  </div>
+  <div class="card">
+<google-map latitude="37.790" longitude="-122.390"></google-map>
+</div>
+  </template>
+
+  <script>
+    class MyView2 extends Polymer.Element {
+      static get is() { return 'my-view2'; }
+      static get properties() { return {
+
+        destino: String,
+
+        fecha: String
+      }
+    }
+  }
+
+    window.customElements.define(MyView2.is, MyView2);
+  </script>
+</dom-module>

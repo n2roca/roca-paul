@@ -1,0 +1,94 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+
+<dom-module id="my-dashboard">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      h1{
+        font-size: x-large;
+        font-family: sans-serif;
+
+      }
+    </style>
+   <my-firedb notes="{{notes}}"> </my-firedb>
+    <div> <iron-icon icon="look"></iron-icon></div>
+    <div>
+      <h1>Ingresa tus productos</h1>
+      <p>by roca</p>
+      
+    </div>
+    <div class="card">
+  <paper-input id="input1" type="number" label="Cupos(Solo números)"><iron-icon icon="android"></iron-icon></paper-input>
+  <paper-input id="input2" type="text" label="Destino(Ej. PIURA)"></paper-input>
+  <paper-input id="input3" type="number" label="Noches(Solo números)"></paper-input>
+  <paper-input id="input4" type="text" label="Aerolinea(Ej. LATAM)"></paper-input>
+  <paper-input id="input5" type="" label="Salida Fecha(aaaa/mm/dd)"></paper-input>
+  <paper-input id="input6" type="" label="Salida Hora(hh:mm)"></paper-input>
+  <paper-input id="input7" type="" label="Retorno Fecha(aaaa/mm/dd)"></paper-input>
+  <paper-input id="input8" type="" label="Retorno Hora(hh:mm)"></paper-input>
+  <paper-input id="input9" type="number" label="Costo(USD$)"></paper-input>
+  <paper-button id="add" on-tap="add">AÑADIR PAQUETE </paper-button>
+  </div>
+  </template>
+
+  <script>
+    class MyDashboard extends Polymer.Element {
+      static get is() { return 'my-dashboard'; }
+
+      static get properties() {
+        return {
+          
+          notes: {
+            type: Object
+          }
+        };
+      }
+    
+add(){
+  this.$.query.ref.push({
+    cupos:this.$.input1.value,
+    destino:this.$.input2.value,
+    noches:this.$.input3.value,
+    aerolinea:this.$.input4.value,
+    salidafecha:this.$.input5.value,
+    salidahora:this.$.input6.value,
+    entradafecha:this.$.input7.value,
+    entradahora:this.$.input8.value,
+    costo:this.$.input9.value
+  });
+  
+  this.$.input1.value=null;
+  this.$.input2.value=null;
+  this.$.input3.value=null;
+  this.$.input4.value=null;
+  this.$.input5.value=null;
+  this.$.input6.value=null;
+  this.$.input7.value=null;
+  this.$.input8.value=null;
+  this.$.input9.value=null;
+ 
+}
+
+}
+    window.customElements.define(MyDashboard.is, MyDashboard);
+  </script>
+</dom-module>

@@ -1,0 +1,175 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="my-firedb.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
+
+<dom-module id="my-viaje">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 5px;
+      }
+      h2{
+         color: #0077b8;
+         font-size: xx-large;
+        
+      }
+     
+      .circle{
+        display: inline-grid;
+        margin: auto;
+        color: #ffffff;
+        background-color: #00bbd3;
+       
+      }
+      .bloqdestino{
+        display: inline-block;
+        margin: auto;
+        font-size: 14px;
+       
+      }
+      .bloqprecio{
+        display: inline-block;
+        margin-left: : auto;
+        margin-right: auto;
+        text-align: center;
+        padding-left: 55px;
+        padding-right: 15px;
+        
+
+      }
+
+      .bloqprecio span{
+        font-size: xx-large;
+        color: #0077b8;
+      
+
+      
+      }
+      .bloqsumit{
+        display: inline-block;
+        margin-left: : auto;
+        margin-right: auto;
+        text-align: center;
+        padding-left: 15px;
+        padding-right: 15px;
+        color: black;
+        float: right;
+        font-family:sans-serif;
+        font-weight: 600;
+      }
+      .cupos{
+        font-size: small;
+
+      }
+      .interno{
+        display: inline-grid;
+      
+        margin: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+
+      }
+      .noches{
+        border: dashed 1px;
+        text-align: center;
+
+      }
+        
+        paper-button.orange {
+        background-color: var(--paper-orange-500);
+        color: white !important;
+        }
+        paper-button.orange[active] {
+        background-color: var(--paper-orange-600);
+        }
+        paper-button.orange a {
+        text-decoration:none;
+        color: white !important;
+        }
+ 
+    </style>
+   <my-firedb notes="{{notes}}"> </my-firedb>
+   <my-cart
+        id="cart"
+        cart="{{cart}}"
+        num-items="{{numItems}}"
+        total="{{total}}"></my-cart>
+
+    <div class="title">
+      <h1>PAQUETES FULL VIAJES</h1>
+      <p>Lo hacemos simple y facil</p>
+      <p></p>
+    </div>
+    <template is="dom-repeat" items="[[notes]]" as="note">
+     <div class="card"> 
+     <div class="bloqdestino">  
+    <div class="circle">[[note.cupos]]</div>
+    
+    <div class="interno">
+    <h2>[[note.destino]]</h2>
+   <span><b>[[note.aerolinea]]</b></span>
+   </div>
+   <div class="interno">
+    <span>Salida: <b>[[note.salidafecha]]</b></span>
+    <span>[[note.salidahora]] hs</span>
+  </div>
+    <div class="interno">
+      <span>Retorno: <b>[[note.entradafecha]]</b></span>
+      <span>[[note.entradahora]] hs</span>
+  </div>
+    
+    <div class="noches">
+      <span>[[note.noches]] Noches</span>
+      </div>
+    </div>
+    <div class="bloqprecio">
+    <div>Desde <span><br><b>$[[note.costo]]</b></span> <br>Tarifa por persona</div>
+  </div>
+  <div class="bloqsumit" >
+  <paper-button class="orange">
+            <a href="https://api.whatsapp.com/send?phone=51992193358&text=Solicito%20[[note.destino]]/%20[[note.aerolinea]]/%20salida:%20[[note.salidafecha]]/%20[[note.noches]]%20noches/%20Costo%20$[[note.costo]]">RESERVAR VIA WHATSAPP</a>
+          </paper-button>
+  </div>
+     
+     
+    </div>
+
+  </template>
+  </template>
+
+  <script>
+    class myviaje extends Polymer.Element {
+      static get is() { return 'my-viaje'; }
+      static get properties() {
+        return {
+          
+          notes: {
+            type: Object
+            }
+          }
+         
+        } 
+
+    }
+
+    window.customElements.define(myviaje.is, myviaje);
+  </script>
+</dom-module>

@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/google-map/google-map-marker.html">
+<link rel="import" href="my-app.html">
+
+
+<dom-module id="my-cart">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+     
+      
+    </div>
+    
+  </template>
+
+  <script>
+    class MyCart extends Polymer.Element {
+      static get is() { return 'my-cart'; }
+      static get properties() { return {
+
+        
+      }
+    }
+  }
+
+    window.customElements.define(MyCart.is, MyCart);
+  </script>
+</dom-module>

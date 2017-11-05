@@ -1,0 +1,51 @@
+<!--
+
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-query.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+
+<dom-module id="my-firedb">
+  <template>
+    <style include="shared-styles">
+      
+    </style>
+   
+    <firebase-app
+      name="firoca" 
+      auth-domain="fullroca-50679.firebaseapp.com"
+      database-url="https://fullroca-50679.firebaseio.com"
+      api-key="AIzaSyBGix0kKz4RwxKzQ2w230sRYpP8NIbHFLo">
+    </firebase-app>
+    <firebase-query
+    id="query"
+    app-name="firoca"
+    path="/paquetes/confirmados"
+    data="{{notes}}">
+    </firebase-query>
+
+  </template>
+
+  <script>
+    class MyFiredb extends Polymer.Element {
+      static get is() { return 'my-firedb'; }
+
+      static get properties() {
+        return {
+          
+          notes: {
+            type: Object,
+            notify:true
+          }
+        };
+      }
+    
+}
+    window.customElements.define(MyFiredb.is, MyFiredb);
+  </script>
+</dom-module>
